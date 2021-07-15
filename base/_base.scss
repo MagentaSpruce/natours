@@ -1,0 +1,45 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  //This defines what 1 rem is so is not typography
+  font-size: 62.5%;
+
+  // @include respond-phone {
+  //   font-size: 50%; //this content gets passed into the mixin - we can add block of code and alll content gets called @content in the mixin. The mixin then includes that code with the content inside.
+  // }
+  // @include respond(phone) {
+  //   font-size: 50%; ///this one is redundant bc the tab port is the same and would take precendence if it was that size screen
+  // }
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; //order matters - if screen was small both tab-land and tab-port would apply but bc tab-port is listed last it takes precendence - order matters
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
